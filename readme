@@ -1,0 +1,144 @@
+## 📋 Descrição do Projeto
+
+Sistema automatizado para extração, processamento e transformação de dados de documentos digitalizados em PDF, utilizando técnicas de visão computacional, OCR e reconhecimento de texto manuscrito.
+
+## 📦 Instalação
+
+### Pré-requisitos
+- Python 3.8+
+- pip (gerenciador de pacotes Python)
+
+### Passo 1: Instalar Dependências
+
+\`\`\`bash
+pip install -r requirements.txt
+\`\`\`
+
+## 🚀 Guia Passo a Passo de Utilização
+
+### Passo 1: Preparar o PDF
+1. Copie o arquivo PDF para a pasta `pdf/`
+2. Abra o arquivo `padronizacao.py`
+3. Localize a linha com `PDF_PATH` e substitua o nome do arquivo PDF
+4. Execute o script:
+   \`\`\`bash
+   python padronizacao.py
+   \`\`\`
+   **Resultado esperado:** Imagens PNG padronizadas serão salvas em `images/imagens_padronizadas/`
+
+### Passo 2: Executar Extração de Dados
+1. Execute o script principal:
+   \`\`\`bash
+   python app.py
+   \`\`\`
+   **Resultado esperado:** Um arquivo `resultado.xlsx` será criado na pasta `output/`
+
+### Passo 3: Validar Resultado
+1. Abra o arquivo `output/resultado.xlsx` no Excel
+2. Valide os dados extraídos:
+   - Verifique se todos os campos foram reconhecidos corretamente
+   - Corrija manualmente qualquer erro de OCR se necessário
+3. Salve e feche o arquivo Excel
+
+### Passo 4: Transformar Dados
+1. Execute o script de transformação:
+   \`\`\`bash
+   python Transformacao/transformacao.py
+   \`\`\`
+   **Resultado esperado:** Dados transformados serão processados e formatados
+
+### Passo 5: Integrar com Sistema Ultragaz
+1. Copie as linhas de dados geradas pelo script de transformação
+2. Cole no arquivo Excel criado pelo sistema Ultragaz
+3. Valide a integração dos dados
+
+## 📁 Estrutura do Projeto
+
+\`\`\`
+├── app.py                          # Script principal de extração
+├── padronizacao.py                 # Script de conversão PDF → imagens
+├── dimensoes.py                    # Utilitários de dimensionamento
+├── README.md                       # Este arquivo
+├── requirements.txt                # Dependências do projeto
+│
+├── pdf/                            # Pasta de entrada (PDFs)
+├── images/                         # Imagens processadas
+│   ├── imagens_padronizadas/       # Imagens convertidas do PDF
+│   └── Treinamento/                # Imagens de treinamento do modelo
+│       ├── marcada/                # Imagens com checkbox marcado
+│       └── vazia/                  # Imagens com checkbox vazio
+│
+├── output/                         # Pasta de saída (resultados)
+│
+├── models/                         # Modelos treinados
+│   ├── cnn.py                      # Modelo CNN para classificação
+│   ├── modelo_checkbox.h5          # Modelo treinado (formato H5)
+│   ├── modelo_checkbox.keras       # Modelo treinado (formato Keras)
+│   ├── prod.py                     # Script de produção
+│   └── teste.py                    # Script de teste
+│
+├── Transformacao/                  # Scripts de transformação
+│   └── transformacao.py            # Script principal de transformação
+│
+└── utils/                          # Utilitários
+    ├── checkbox.py                 # Detecção de checkboxes
+    ├── easyocr.py                  # OCR para números
+    ├── preprocess.py               # Pré-processamento de imagens
+    ├── regions.py                  # Definição de regiões
+    └── trocr.py                    # OCR para texto manuscrito
+\`\`\`
+
+## 🛠️ Tecnologias Utilizadas
+
+- **OpenCV** - Processamento de imagens
+- **Pandas** - Manipulação de dados
+- **NumPy** - Operações numéricas
+- **PyMuPDF (fitz)** - Conversão PDF → imagens
+- **TensorFlow/Keras** - Modelos de deep learning
+- **Transformers** - Modelos pré-treinados (TrOCR)
+- **EasyOCR** - Reconhecimento óptico de caracteres
+- **openpyxl** - Manipulação de arquivos Excel
+- **torch** - Framework PyTorch para ML
+
+## ⚠️ Observações Importantes
+
+1. **GPU (Opcional):** Para melhor desempenho, instale a versão CUDA do PyTorch:
+   \`\`\`bash
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+   \`\`\`
+
+2. **Modelos Pré-treinados:** Os modelos (TrOCR, CNN) serão baixados automaticamente na primeira execução
+
+3. **Primeira Execução:** A primeira vez que executar pode demorar mais tempo pois os modelos estarão sendo baixados
+
+4. **Espaço em Disco:** Certifique-se de ter pelo menos 2GB de espaço livre para os modelos
+
+## 🐛 Troubleshooting
+
+### Erro: "ModuleNotFoundError"
+- Verifique se todas as dependências foram instaladas: `pip install -r requirements.txt`
+- Tente reinstalar as dependências: `pip install -r requirements.txt --force-reinstall`
+
+### Erro: "Arquivo PDF não encontrado"
+- Verifique se o arquivo PDF existe na pasta `pdf/`
+- Corrija o caminho no arquivo `padronizacao.py`
+
+### Erro relacionado a GPU/CUDA
+- O sistema usa CPU por padrão, que é mais compatível
+- Se quiser usar GPU, instale CUDA: https://developer.nvidia.com/cuda-downloads
+
+### Performance lenta
+- Certifique-se de que nenhum outro programa pesado está em execução
+- Considere usar uma máquina com mais memória RAM ou GPU
+
+## 📞 Suporte
+
+Para problemas ou dúvidas, verifique:
+1. Se todas as dependências estão instaladas corretamente
+2. Se o arquivo PDF está na pasta correta com o nome correto
+3. Se o Excel está fechado durante o processamento
+
+---
+
+**Última atualização:** Maio 2026
+'@)"
