@@ -5,11 +5,17 @@ from pathlib import Path
 path_atual = Path.cwd()
 print(path_atual)
 # PDF de entrada
-PDF_PATH = path_atual / 'pdf' / 'Untitled_20260417_100314 (1) Copy.pdf'
+PDF_PATH = path_atual / 'pdf' / 'FICHA DE ATUALIZAÇÃO - 17.04.2026..pdf'
 
 # Pasta de saída
 PASTA_SAIDA = path_atual / 'images' / 'imagens_padronizadas'
 PASTA_SAIDA.mkdir(exist_ok=True)
+
+# Limpar pasta de saída (apagar imagens antigas)
+if PASTA_SAIDA.exists():
+    for arquivo in PASTA_SAIDA.glob('*.png'):
+        arquivo.unlink()
+    print("✓ Imagens antigas removidas")
 
 # Abrir PDF
 pdf = fitz.open(PDF_PATH)
