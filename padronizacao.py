@@ -15,7 +15,7 @@ PASTA_SAIDA.mkdir(exist_ok=True)
 pdf = fitz.open(PDF_PATH)
 
 # Percorrer páginas
-for numero_pagina in range(min(38, len(pdf))):
+for numero_pagina in range(len(pdf)):
 
     pagina = pdf[numero_pagina]
 

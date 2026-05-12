@@ -8,6 +8,7 @@ from utils.trocr import reconhecer_texto
 from utils.checkbox import checkbox_marcado
 from utils.easyocr import reconhecer_numeros
 
+
 from pathlib import Path
 
 # =========================
@@ -32,7 +33,7 @@ MARGEM_EXTRA = 2  # Margem extra para buscar campos (em pixels)
 # =========================
 
 # Pegar todas as imagens da pasta
-imagens = sorted([f for f in caminho_imagens.glob("*.png")])
+imagens = sorted([f for f in caminho_imagens.glob("*.png")])[:1]
 
 resultados = []
 
@@ -180,6 +181,7 @@ def processar_campo_texto(nome_regiao, nome_debug, M=None):
     )
 
     # OCR
+    #texto = reconhecer_texto(crop)
     texto = reconhecer_texto(crop)
 
     return texto
@@ -300,6 +302,7 @@ def processar_telefone(M=None):
     )
 
     # TrOCR
+    #texto = reconhecer_texto(crop)
     texto = reconhecer_texto(crop)
 
     return texto
@@ -366,6 +369,7 @@ def processar_numerico(nome_regiao, nome_debug, M=None):
         crop
     )
 
+    #texto = reconhecer_numeros(crop)
     texto = reconhecer_numeros(crop)
 
     return texto
